@@ -1,5 +1,5 @@
 import { projects, pollenPages } from './projects.js';
-import { initWorkRail } from './work-rail.js';
+import { initWorkRail } from './work-rail.js?v=6';
 const base = new URL('.', import.meta.url);
 const url = path => new URL(path, base).href;
 const assets = name => url(`assets/${name}`);
@@ -25,6 +25,6 @@ if(page==='pollen'){
 if(page==='home'){
  document.body.classList.add('home');
  main.className='home-scene';
- main.innerHTML=`<h1 class="sr-only">Hairong Liu — Designer and researcher</h1><img class="home-water" src="${assets('water.png')}" width="1672" height="941" alt=""><canvas class="water-canvas" aria-hidden="true"></canvas>`;
- import('./water.js').then(({initWater})=>initWater(main.querySelector('canvas'),main.querySelector('img'))).catch(()=>{});
+ main.innerHTML=`<h1 class="sr-only">Hairong Liu — Designer and researcher</h1><img class="home-water" src="${assets('water-photo.jpeg')}" width="1428" height="804" alt=""><canvas class="water-canvas" aria-hidden="true"></canvas>`;
+ import('./water.js?v=7').then(({initWater})=>initWater(main.querySelector('canvas'),main.querySelector('img'))).catch(()=>{});
 }

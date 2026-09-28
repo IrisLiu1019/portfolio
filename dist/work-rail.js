@@ -16,10 +16,13 @@ export function initWorkRail(rail, button) {
     if(!document.hidden)frame=requestAnimationFrame(tick);
   }
   button.addEventListener('click',()=>{paused=!paused;label();});
-  rail.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')hover=true;});
-  rail.addEventListener('pointerleave',()=>{hover=false;});
-  rail.addEventListener('focusin',()=>{focused=true;});
-  rail.addEventListener('focusout',()=>{focused=rail.contains(document.activeElement);});
+  // Empty gallery space should not stop the exhibition; pause over a project only.
+  rail.querySelectorAll('.work-project').forEach(card=>{
+    card.addEventListener('pointerenter',event=>{if(event.pointerType==='mouse')hover=true;});
+    card.addEventListener('pointerleave',()=>{hover=false;});
+  });
+  rail.addEventListener('focusin',event=>{focused=event.target!==rail;});
+  rail.addEventListener('focusout',event=>{focused=event.relatedTarget!==rail&&rail.contains(event.relatedTarget);});
   rail.addEventListener('pointerdown',()=>{dragging=true;delay=performance.now()+6000;},{passive:true});
   window.addEventListener('pointerup',()=>{dragging=false;delay=performance.now()+2500;},{passive:true});
   window.addEventListener('pointercancel',()=>{dragging=false;},{passive:true});

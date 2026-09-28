@@ -2,8 +2,8 @@
 
 Static modular portfolio using the supplied Home, Work and About designs and original SVG lettering.
 
-- Home: original water painting with pointer-driven WebGL refraction; typography remains separate and sharp. Reduced-motion preference and WebGL fallback supported.
-- Work: six projects in the approved order, horizontally scrolling at 24 px/second. Pause/Play, hover/focus pause, touch and keyboard browsing. Reduced-motion users start paused.
+- Home: user-supplied water photograph with pointer-driven elliptical WebGL ripples; typography remains separate and sharp. Reduced-motion preference and WebGL fallback supported.
+- Work: six projects in the approved order, horizontally scrolling at 24 px/second. Pause/Play, project hover/focus pause (empty space continues scrolling), touch and keyboard browsing. Reduced-motion users start paused.
 - About: approved biography, original-ratio portrait, CV PDF and email links.
 - Pollen Express: all eight supplied boards; each opens at full size. Other project entries have no detail route yet.
 

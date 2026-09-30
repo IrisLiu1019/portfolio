@@ -1,0 +1,38 @@
+{
+  "width": 1536,
+  "height": 1024,
+  "rectFormat": "[x,y,width,height] in source pixels",
+  "notes": "Main koi rectangles overlap neighboring silhouettes; use their optional polygon when extracting with an offscreen canvas. Other listed crops are isolated. Head, tail, center and polygons are absolute atlas coordinates.",
+  "sprites": {
+    "redKoi": {
+      "rect": [7, 25, 505, 432],
+      "head": [480, 420], "tail": [93, 67], "center": [292, 235],
+      "polygon": [[7,25],[156,20],[240,67],[313,112],[347,166],[386,102],[425,131],[432,223],[449,284],[486,325],[509,380],[507,449],[419,457],[356,409],[304,377],[217,352],[163,339],[154,280],[220,262],[130,238],[69,162],[10,127]]
+    },
+    "darkKoi": {
+      "rect": [443, 89, 527, 380],
+      "head": [470, 132], "tail": [878, 398], "center": [687, 268],
+      "polygon": [[443,89],[520,75],[612,78],[690,104],[749,134],[756,182],[845,202],[912,256],[932,322],[970,410],[925,469],[846,465],[773,398],[733,345],[677,340],[601,301],[565,286],[514,270],[491,195],[446,157]]
+    },
+    "orangeKoi": {
+      "rect": [52, 747, 389, 235],
+      "head": [83, 780], "tail": [371, 893], "center": [231, 858]
+    },
+    "goldKoi": {
+      "rect": [965, 764, 212, 188],
+      "head": [997, 790], "tail": [1137, 902], "center": [1070, 846]
+    },
+    "dragonflyLarge": {
+      "rect": [899, 66, 348, 302],
+      "head": [1071, 211], "tail": [978, 353], "center": [1055, 221]
+    },
+    "dragonflyUpperRight": {
+      "rect": [1242, 65, 254, 182],
+      "head": [1401, 114], "tail": [1299, 237], "center": [1385, 133]
+    },
+    "dragonflyLowerRight": {
+      "rect": [1266, 247, 236, 237],
+      "head": [1377, 347], "tail": [1486, 471], "center": [1384, 358]
+    }
+  }
+}

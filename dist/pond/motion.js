@@ -46,18 +46,21 @@ for (let cohort = 0; cohort < COHORTS.length; cohort++) {
       id: i === 0 ? 'koi-red' : i === 1 ? 'koi-dark' : `school-${String(i).padStart(2, '0')}`,
       kind: 'fish', sprite: variant.sprite,
       x: point[0], y: point[1], size: variant.length * (.77 + depth * .27), depth,
-      speed: speed * (.97 + random() * .06), direction: i < 2 ? -1 : 1,
-      angle: i < 2 ? Math.PI : 0,
+      speed: speed * (.97 + random() * .06), direction: 1,
+      angle: 0,
+      waveAmplitude: 20 + (i % 5) * 3,
+      wavelength: 370 + (cohort % 3) * 65,
+      waveOffset: cohort * .65 + member * .14,
       frequency: 1.5 + random() * .6, phaseOffset: random() * TAU,
     });
   }
 }
 CONFIG.push(
-  { id: 'dragonfly-small', kind: 'dragonfly', sprite: 'dragonflyUpperRight', size: 126, depth: 1,
-    orbit: { x: 1015, y: 275, rx: 315, ry: 155, start: -2.7, direction: 1, period: 12.5 },
+  { id: 'dragonfly-small', kind: 'dragonfly', sprite: 'dragonflyLarge', size: 126, depth: 1,
+    x: 780, y: 255,
     angle: -.75, frequency: 8.3, phaseOffset: .8 },
   { id: 'dragonfly-large', kind: 'dragonfly', sprite: 'dragonflyLarge', size: 216, depth: 1,
-    orbit: { x: 1015, y: 275, rx: 315, ry: 155, start: -.1, direction: -1, period: 15 },
+    x: 1180, y: 225,
     angle: -2.6, frequency: 9.1, phaseOffset: 3.1 },
 );
 
@@ -72,14 +75,16 @@ export function createMotion() {
         const margin = config.size + 45;
         // A whole fish exits before wrapping; no pop or turn inside the pond.
         creature.x = modulo(config.x + margin + clock * config.speed * config.direction, WIDTH + margin * 2) - margin;
-        creature.y = config.y;
+        // A shared wavelength within each school keeps a loose travelling wave.
+        // Use unwrapped distance so crossing the edge never resets its phase.
+        const distance = config.x + clock * config.speed;
+        creature.y = config.y + Math.sin(distance / config.wavelength * TAU + config.waveOffset) * config.waveAmplitude;
       } else {
-        const orbit = config.orbit;
-        const theta = orbit.start + modulo(clock, orbit.period) / orbit.period * TAU * orbit.direction;
-        creature.x = orbit.x + Math.cos(theta) * orbit.rx;
-        creature.y = orbit.y + Math.sin(theta) * orbit.ry;
+        // Fixed hover point. Only the four existing wings deform in the renderer.
+        creature.x = config.x;
+        creature.y = config.y;
       }
-      // Orbit position and body orientation are independent. No 360° spins.
+      // All headings stay fixed; no body spins or upside-down turns.
       creature.angle = config.angle;
       creature.phase = modulo(clock * TAU * config.frequency + config.phaseOffset, TAU);
       creature.turn = 0;

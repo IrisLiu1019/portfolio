@@ -1,4 +1,4 @@
-import { createMotion } from './motion.js?v=17';
+import { createMotion } from './motion.js?v=20';
 
 const W = 1672, H = 941;
 export async function initPond(root = document, options = {}) {
@@ -70,7 +70,7 @@ function start(images) {
       }
       // Each fish atlas has an explicit dorsal side. Facing direction changes
       // only X; its back remains above its belly for either swimming direction.
-      // Dragonfly flight angles are fixed per lane, never animated rotations.
+      // Dragonflies hover at a fixed position and angle.
       if(isFly<.5)scenePosition=at+vec2(local.x*forward.x,local.y*upright);
       else scenePosition=at+forward*local.x+vec2(-forward.y,forward.x)*local.y;
       vec2 screen=(scenePosition/vec2(1672.,941.)-view.xy)/view.zw;

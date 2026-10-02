@@ -55,14 +55,6 @@ for (let cohort = 0; cohort < COHORTS.length; cohort++) {
     });
   }
 }
-CONFIG.push(
-  { id: 'dragonfly-small', kind: 'dragonfly', sprite: 'dragonflyLarge', size: 126, depth: 1,
-    x: 780, y: 255,
-    angle: -.75, frequency: 8.3, phaseOffset: .8 },
-  { id: 'dragonfly-large', kind: 'dragonfly', sprite: 'dragonflyLarge', size: 216, depth: 1,
-    x: 1180, y: 225,
-    angle: -2.6, frequency: 9.1, phaseOffset: 3.1 },
-);
 
 export function createMotion() {
   const creatures = [];

@@ -35,8 +35,8 @@ if(page==='project'){
 if(page==='home'){
  document.body.classList.add('home');
  main.className='home-scene';
- main.innerHTML=`<h1 class="sr-only">Hairong Liu — Designer and researcher</h1><div id="stage" class="intro-stage"><img id="fallback" class="home-water" src="${assets('pond-opening.webp')}" width="1672" height="941" alt="A painted pond with lily pads, fish and a frog"><canvas id="pond" class="water-canvas" aria-label="Interactive pond. Move or tap the water to make ripples. Fish swim left to right on gentle wave paths. Dragonflies hover in place with four fluttering wings, and the frog blows bubbles."></canvas><span id="loading" class="intro-status" role="status">Opening the pond…</span></div><div class="home-tools"><button id="ripple" class="water-invitation" type="button" aria-label="Create a ripple in the water">Touch the water <span aria-hidden="true">↗</span></button><button id="pause" class="water-toggle" type="button" aria-pressed="false">Pause motion</button></div>`;
- import('./pond/scene.js?v=20').then(({initPond})=>initPond(main,{
+ main.innerHTML=`<h1 class="sr-only">Hairong Liu — Designer and researcher</h1><div id="stage" class="intro-stage"><img id="fallback" class="home-water" src="${assets('pond-clean.webp')}" width="1672" height="941" alt="A painted pond with lily pads and a frog"><canvas id="pond" class="water-canvas" aria-label="Interactive pond. Move or tap the water to make ripples. Fish swim left to right on gentle wave paths. The frog blows bubbles."></canvas><span id="loading" class="intro-status" role="status">Opening the pond…</span></div><div class="home-tools"><button id="ripple" class="water-invitation" type="button" aria-label="Create a ripple in the water">Touch the water <span aria-hidden="true">↗</span></button><button id="pause" class="water-toggle" type="button" aria-pressed="false">Pause motion</button></div>`;
+ import('./pond/scene.js?v=21').then(({initPond})=>initPond(main,{
    fit:'cover',
    assets:{original:assets('pond-clean.webp'),clean:assets('pond-clean.webp'),creatures:assets('pond-creatures.webp')},
    atlasUrl:url('pond/atlas.json?v=20'),

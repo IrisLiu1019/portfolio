@@ -1,4 +1,4 @@
-import { createMotion } from './motion.js?v=20';
+import { createMotion } from './motion.js?v=21';
 
 const W = 1672, H = 941;
 export async function initPond(root = document, options = {}) {
@@ -223,7 +223,7 @@ function start(images) {
     bind(water,quad);gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,sceneTexture);gl.uniform1i(water.scene,0);gl.uniform4fv(water.view,view);
     dropUniforms.fill(0);drops.slice(-16).forEach((d,i)=>dropUniforms.set([d.x,d.y,d.time,d.strength],i*4));
     gl.uniform4fv(water['drops[0]'],dropUniforms);gl.uniform1f(water.clock,elapsed);gl.uniform1f(water.strength,reduced.matches&&paused?0:1);gl.drawArrays(gl.TRIANGLES,0,6);
-    gl.enable(gl.BLEND);movement.creatures.filter(c=>c.kind==='dragonfly').forEach(drawCreature);
+    gl.enable(gl.BLEND);
     bind(bubbles,quad);gl.uniform4fv(bubbles.view,view);gl.uniform1f(bubbles.clock,elapsed-bubbleEpoch);gl.drawArrays(gl.TRIANGLES,0,6);gl.disable(gl.BLEND);
   }
   function ui() {
